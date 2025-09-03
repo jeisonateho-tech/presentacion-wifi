@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía práctica para entender y optimizar tu red Wi-Fi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .wifi-wave {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white shadow-lg z-50 px-6 py-4">
+        <div class="flex justify-between items-center max-w-6xl mx-auto">
+            <h1 class="text-xl font-bold text-blue-800">Guía Wi-Fi</h1>
+            <div class="flex items-center space-x-4">
+                <span id="slideCounter" class="text-sm text-gray-600">1 / 9</span>
+                <button id="prevBtn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed">
+                    ← Anterior
+                </button>
+                <button id="nextBtn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Siguiente →
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slides Container -->
+    <div class="pt-20 pb-8">
+        <!-- Slide 1: Portada -->
+        <div class="slide active fade-in">
+            <div class="max-w-4xl mx-auto px-6 py-12 text-center">
+                <div class="mb-8">
+                    <svg class="w-32 h-32 mx-auto mb-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.07 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
+                    </svg>
+                </div>
+                <h1 class="text-5xl font-bold text-blue-800 mb-4">Guía práctica para entender y optimizar tu red Wi-Fi</h1>
+                <p class="text-xl text-gray-700 mb-8">Funcionamiento, configuración, bandas, ubicación y consejos</p>
+                <div class="bg-white rounded-xl p-6 shadow-lg max-w-2xl mx-auto">
+                    <p class="text-gray-600">Aprende todo lo necesario para tener una red Wi-Fi rápida, estable y segura en tu hogar u oficina</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: ¿Qué es el Wi-Fi? -->
+        <div class="slide fade-in">
+            <div class="max-w-4xl mx-auto px-6 py-12">
+                <h2 class="text-4xl font-bold text-blue-800 mb-8 text-center">¿Qué es el Wi-Fi?</h2>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-white rounded-xl p-8 shadow-lg">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            Wi-Fi es una tecnología que permite conectar dispositivos a internet de forma inalámbrica. 
+                            Utiliza ondas de radio para transmitir datos entre tu router y dispositivos como teléfonos, 
+                            computadoras y tablets.
+                        </p>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <p class="text-blue-800 font-semibold">💡 En pocas palabras:</p>
+                            <p class="text-blue-700">Es como tener cables invisibles que conectan tus dispositivos a internet</p>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="relative">
+                            <svg class="w-48 h-48 mx-auto text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <div class="wifi-wave absolute inset-0 border-4 border-blue-300 rounded-full"></div>
+                            <div class="wifi-wave absolute inset-4 border-4 border-blue-400 rounded-full" style="animation-delay: 0.5s;"></div>
+                            <div class="wifi-wave absolute inset-8 border-4 border-blue-500 rounded-full" style="animation-delay: 1s;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: ¿Cómo funciona el Wi-Fi? -->
+        <div class="slide fade-in">
+            <div class="max-w-4xl mx-auto px-6 py-12">
+                <h2 class="text-4xl font-bold text-blue-800 mb-8 text-center">¿Cómo funciona el Wi-Fi?</h2>
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-3xl">🌐</span>
+                            </div>
+                            <h3 class="font-bold text-blue-800 mb-2">ONT/Módem</h3>
+                            <p class="text-sm text-gray-600">Recibe internet del proveedor</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-3xl">📡</span>
+                            </div>
+                            <h3 class="font-bold text-green-800 mb-2">Router</h3>
+                            <p class="text-sm text-gray-600">Convierte la señal en Wi-Fi</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-3xl">📱</span>
+                            </div>
+                            <h3 class="font-bold text-purple-800 mb-2">Dispositivos</h3>
+                            <p class="text-sm text-gray-600">Se conectan al Wi-Fi</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <p class="text-gray-700 text-center">
+                            <strong>Proceso:</strong> Internet → ONT → Router → Ondas Wi-Fi → Tus dispositivos
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Bandas de frecuencia -->
+        <div class="slide fade-in">
+            <div class="max-w-4xl mx-auto px-6 py-12">
+                <h2 class="text-4xl font-bold text-blue-800 mb-8 text-center">Bandas de frecuencia</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl p-6 shadow-lg border-l-4 border-red-500">
+                        <h3 class="text-xl font-bold text-red-600 mb-4">2.4 GHz</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-2">🐌</span>
+                                <span class="text-sm">Velocidad: Lenta</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-2">📶</span>
+                                <span class="text-sm">Cobertura: Amplia</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-2">📻</span>
+                                <span class="text-sm">Interferencia: Alta</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-4">Ideal para dispositivos básicos y lugares lejanos del router</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+                        <h3 class="text-xl font-bold text-green-600 mb-4">5 GHz</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-2">🚀</span>
+                                <span class="text-sm">Velocidad: Rápida</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-2">📶</span>
+                                <span class="text-sm">Cobertura: Media</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-2">✨</span>
+                                <span class="text-sm">Interferencia: Baja</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-4">Perfecta para streaming, gaming y descargas</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+                        <h3 class="text-xl font-bold text-purple-600 mb-4">6 GHz</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-2">⚡</span>
+                                <span class="text-sm">Velocidad: Muy rápida</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-2">📶</span>
+                                <span class="text-sm">Cobertura: Corta</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-2">🔇</span>
+                                <span class="text-sm">Interferencia: Mínima</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-4">Lo más nuevo, para dispositivos compatibles cerca del router</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Ubicación ideal -->
+        <div class="slide fade-in">
+            <div class="max-w-4xl mx-auto px-6 py-12">
+                <h2 class="text-4xl font-bold text-blue-800 mb-8 text-center">Ubicación ideal de los equipos</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-xl p-6 shadow-lg">
+                        <h3 class="text-xl font-bold text-green-600 mb-4">✅ Lugares ideales</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">•</span>
+                                Centro de la casa/oficina
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">•</span>
+                                Altura media (1-2 metros)
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">•</span>
+                                Espacio abierto y ventilado
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">•</span>
+                                Lejos de otros electrónicos
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">•</span>
+                                Antenas verticales
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg">
+                        <h3 class="text-xl font-bold text-red-600 mb-4">❌ Evitar</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <span class="text-red-500 mr-2">•</span>
+                                Dentro de armarios cerrados
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-red-500 mr-2">•</span>
+                                Cerca de microondas
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-red-500 mr-2">•</span>
+                                Detrás de paredes gruesas
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-red-500 mr-2">•</span>
+                                En el suelo o muy alto
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-red-500 mr-2">•</span>
+                                Junto a espejos o metal
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 bg-blue-50 p-6 rounded-xl text-center">
+                    <p class="text-blue-800 font-semibold">💡 Consejo clave:</p>
+                    <p class="text-blue-700">La ubicación del router es tan importante como su calidad</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Configuración básica -->
+        <div class="slide fade-in">
+            <div class="max-w-4xl mx-auto px-6 py-12">
+                <h2 class="text-4xl font-bold text-blue-800 mb-8 text-center">Configuración básica de red Wi-Fi</h2>
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-600 mb-4">Pasos principales:</h3>
+                            <ol class="space-y-4">
+                                <li class="flex items-start">
+                                    <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-1">1</span>
+                                    <span>Conecta el router al módem/ONT con cable Ethernet</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-1">2</span>
+                                    <span>Accede a la configuración (192.168.1.1 o 192.168.0.1)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-1">3</span>
+                                    <span>Configura el nombre de red (SSID)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-1">4</span>
+                                    <span>Establece una contraseña segura</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-1">5</span>
+                                    <span>Selecciona el tipo de seguridad WPA3 o WPA2</span>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h4 class="font-bold text-gray-800 mb-3">🔧 Datos típicos de acceso:</h4>
+                            <div class="space-y-2 text-sm">
+                                <p><strong>IP:</strong> 192.168.1.1 o 192.168.0.1</p>
+                                <p><strong>Usuario:</strong> admin</p>
+                                <p><strong>Contraseña:</strong> admin o password</p>
+                                <p class="text-xs text-gray-600 mt-3">*Revisa la etiqueta del router para datos específicos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Mantenimiento y seguridad -->
+        <div class="slide fade-in">
+            <div class="max-w-4xl mx-auto px-6 py-12">
+                <h2 class="text-4xl font-bold text-blue-800 mb-8 text-center">Mantenimiento y seguridad</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-xl p-6 shadow-lg">
+                        <h3 class="text-xl font-bold text-green-600 mb-4">🔒 Seguridad</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                <div>
+                                    <strong>Contraseña fuerte:</strong> Mínimo 12 caracteres con números y símbolos
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                <div>
+                                    <strong>Desactivar WPS:</strong> Evita accesos no autorizados
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                <div>
+                                    <strong>Red de invitados:</strong> Separa dispositivos personales
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg">
+                        <h3 class="text-xl font-bold text-blue-600 mb-4">🔧 Mantenimiento</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2 mt-1">•</span>
+                                <div>
+                                    <strong>Actualizar firmware:</strong> Cada 3-6 meses
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2 mt-1">•</span>
+                                <div>
+                                    <strong>Reiniciar router:</strong> Una vez al mes
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2 mt-1">•</span>
+                                <div>
+                                    <strong>Limpiar ventilación:</strong> Evita sobrecalentamiento
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6 bg-yellow-50 p-6 rounded-xl border-l-4 border-yellow-400">
+                    <p class="text-yellow-800"><strong>⚠️ Importante:</strong> Cambia las contraseñas predeterminadas del router inmediatamente después de la instalación</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Consejos para mejorar rendimiento -->
+        <div class="slide fade-in">
+            <div class="max-w-4xl mx-auto px-6 py-12">
+                <h2 class="text-4xl font-bold text-blue-800 mb-8 text-center">Consejos para mejorar el rendimiento</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <h3 class="font-bold text-green-600 mb-3">🚀 Optimización de velocidad</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li>• Usa 5 GHz para dispositivos cercanos</li>
+                                <li>• Cable Ethernet para gaming/streaming</li>
+                                <li>• Actualiza drivers de red</li>
+                                <li>• Cierra aplicaciones innecesarias</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <h3 class="font-bold text-blue-600 mb-3">📶 Mejorar cobertura</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li>• Repetidores Wi-Fi en zonas muertas</li>
+                                <li>• Sistema mesh para casas grandes</li>
+                                <li>• Antenas direccionales</li>
+                                <li>• Powerline adapters como alternativa</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <h3 class="font-bold text-purple-600 mb-3">🔧 Configuración avanzada</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li>• Cambiar canal Wi-Fi menos congestionado</li>
+                                <li>• QoS para priorizar dispositivos</li>
+                                <li>• Banda dual automática</li>
+                                <li>• Limitar ancho de banda por dispositivo</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <h3 class="font-bold text-red-600 mb-3">⚡ Evitar interferencias</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li>• Alejar de microondas y Bluetooth</li>
+                                <li>• Usar canales 1, 6 u 11 en 2.4 GHz</li>
+                                <li>• Evitar dispositivos de 2.4 GHz innecesarios</li>
+                                <li>• Revisar apps que escanean Wi-Fi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Conclusión -->
+        <div class="slide fade-in">
+            <div class="max-w-4xl mx-auto px-6 py-12 text-center">
+                <h2 class="text-4xl font-bold text-blue-800 mb-8">Conclusión</h2>
+                <div class="bg-white rounded-xl p-8 shadow-lg mb-8">
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">🎯</span>
+                            </div>
+                            <h3 class="font-bold text-blue-800 mb-2">Ubicación correcta</h3>
+                            <p class="text-sm text-gray-600">Centro de la casa, altura media, sin obstáculos</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">🔒</span>
+                            </div>
+                            <h3 class="font-bold text-green-800 mb-2">Seguridad adecuada</h3>
+                            <p class="text-sm text-gray-600">Contraseñas fuertes, WPA3, actualizaciones</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">⚡</span>
+                            </div>
+                            <h3 class="font-bold text-purple-800 mb-2">Optimización continua</h3>
+                            <p class="text-sm text-gray-600">Mantenimiento regular, configuración apropiada</p>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <p class="text-lg text-blue-800 font-semibold mb-2">
+                            Una red Wi-Fi bien configurada y mantenida mejora significativamente tu experiencia digital
+                        </p>
+                        <p class="text-blue-700">
+                            Aplica estos conocimientos para disfrutar de internet rápido, estable y seguro
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-2">¡Gracias por tu atención!</h3>
+                    <p>¿Tienes alguna pregunta sobre Wi-Fi?</p>
+                    <div class="mt-4 text-sm opacity-90">
+                        <p>📧 Contacto disponible para consultas adicionales</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideCounter = document.getElementById('slideCounter');
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            // Update counter
+            slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            
+            // Update button states
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+            
+            // Add fade-in animation
+            slides[currentSlide].classList.add('fade-in');
+            setTimeout(() => {
+                slides[currentSlide].classList.remove('fade-in');
+            }, 500);
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9797808db32f3bf3',t:'MTc1NjkyNjE1NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
